@@ -49,6 +49,8 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.example.compose.rally.Accounts
+import com.example.compose.rally.Bills
 import com.example.compose.rally.R
 import com.example.compose.rally.data.UserData
 import com.example.compose.rally.ui.components.AccountRow
@@ -60,9 +62,8 @@ import java.util.Locale
 
 @Composable
 fun OverviewScreen(
-    onClickSeeAllAccounts: () -> Unit = {},
-    onClickSeeAllBills: () -> Unit = {},
-    onAccountClick: (String) -> Unit = {},
+    onClickSeeAllAccounts: () -> Unit,
+    onClickSeeAllBills: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -74,7 +75,7 @@ fun OverviewScreen(
         Spacer(Modifier.height(RallyDefaultPadding))
         AccountsCard(
             onClickSeeAll = onClickSeeAllAccounts,
-            onAccountClick = onAccountClick
+            onAccountClick = {}
         )
         Spacer(Modifier.height(RallyDefaultPadding))
         BillsCard(

@@ -36,11 +36,8 @@ import com.example.compose.rally.ui.overview.OverviewScreen
 fun RallyApp() {
     RallyTheme {
         val navController = rememberNavController()
-
         val currentBackStack = navController.currentBackStackEntryAsState().value
-
         val currentDestination = currentBackStack?.destination
-
         // Change the variable to this and use Overview as a backup screen if this returns null
         val currentScreen =
             rallyTabRowScreens.find { it.route == currentDestination?.route } ?: Overview
@@ -60,8 +57,9 @@ fun RallyApp() {
                 startDestination = Overview.route,
                 modifier = Modifier.padding(innerPadding)
             ) {
-                composable(Overview.route) { OverviewScreen() }
-                // Tambahkan composable lainnya jika perlu
+                composable(route = Overview.route) {
+                    Overview.screen()
+                }
             }
         }
     }

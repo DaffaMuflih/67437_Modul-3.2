@@ -49,13 +49,13 @@ object Overview : RallyDestination {
 object Accounts : RallyDestination {
     override val icon = Icons.Filled.AttachMoney
     override val route = "accounts"
-    override val screen: @Composable () -> Unit = { AccountsScreen() }
+    //override val screen: @Composable () -> Unit = { AccountsScreen() }
 }
 
 object Bills : RallyDestination {
     override val icon = Icons.Filled.MoneyOff
     override val route = "bills"
-    override val screen: @Composable () -> Unit = { BillsScreen() }
+    //override val screen: @Composable () -> Unit = { BillsScreen() }
 }
 
 object SingleAccount : RallyDestination {
