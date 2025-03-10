@@ -30,6 +30,7 @@ import com.example.compose.rally.ui.components.RallyTabRow
 import com.example.compose.rally.ui.theme.RallyTheme
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import com.example.compose.rally.ui.accounts.SingleAccountScreen
 import com.example.compose.rally.ui.overview.OverviewScreen
 
 @Composable
@@ -57,12 +58,20 @@ fun RallyApp() {
                 startDestination = Overview.route,
                 modifier = Modifier.padding(innerPadding)
             ) {
-                composable(route = Overview.route) {
-                    Overview.screen()
+                composable(
+                    route = SingleAccount.routeWithArgs,
+                    arguments = SingleAccount.arguments
+                ) { navBackStackEntry ->
+                    val accountType = navBackStackEntry.arguments?.getString(SingleAccount.accountTypeArg)
+                    SingleAccountScreen(accountType)
                 }
             }
         }
     }
+}
+
+private fun NavHostController.navigateToSingleAccount(accountType: String) {
+    this.navigateSingleTopTo("${SingleAccount.route}/$accountType")
 }
 
 fun NavHostController.navigateSingleTopTo(route: String) {
